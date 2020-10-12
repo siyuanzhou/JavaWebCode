@@ -1,0 +1,14 @@
+<tr v-for="u in userList">
+    <td><input name="ids" type="checkbox"></td>
+    <td>{{u.id}}</td>
+    <td>{{u.username}}
+    </td>
+    <td>{{u.password}}</td>
+    <td>{{u.sex}}</td>
+    <td>{{u.age}}</td>
+    <td class="text-center">{{u.email}}</td>
+    <td class="text-center">
+        <button type="button" class="btn bg-olive btn-xs">详情</button>
+        <button type="button" class="btn bg-olive btn-xs" @click="findById(u.id)">编辑</button>
+    </td>
+</tr>

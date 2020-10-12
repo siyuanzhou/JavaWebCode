@@ -1,0 +1,14 @@
+/*
+<!-- 配置 dbAssit -->
+<bean id="dbAssit" class="com.itheima.dbassit.DBAssit">
+<property name="dataSource" ref="dataSource"></property>
+</bean>
+<!-- 配置数据源 -->
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+<property name="jdbcUrl" value="jdbc:mysql:///spring_day02"></property>
+<property name="user" value="root"></property>
+<property name="password" value="1234"></property>
+</bean>
+
+ */

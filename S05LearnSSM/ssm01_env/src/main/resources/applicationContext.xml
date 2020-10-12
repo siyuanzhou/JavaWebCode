@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd
+                    http://www.springframework.org/schema/aop
+                    http://www.springframework.org/schema/aop/spring-aop.xsd
+                    http://www.springframework.org/schema/tx
+                    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!-- 开启注解扫描，要扫描的是service和dao层的注解，要忽略web层controller注解，因为web层让SpringMVC框架
+    去管理 -->
+    <context:component-scan base-package="site.syzhou">
+        <!-- 配置要忽略的注解 -->
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!-- spring整合Mybatis框架，把mybatis配置文件(SqlMapConfig.xml)中内容配置到spring配置文件中-->
+    <!-- 配置C3P0的连接池对象 -->
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql:///ssm" />
+        <property name="user" value="root" />
+        <property name="password" value="root" />
+    </bean>
+    <!-- 配置SqlSession的工厂 -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据库连接池 -->
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+    <!-- 配置扫描dao的包,配置自动扫描所有Mapper接口和文件 -->
+    <!-- 配置扫描dao的包 -->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="site.syzhou.dao"/>
+    </bean>
+    <!--配置 spring 声明式事务管理-->
+    <!-- 配置事务管理器 -->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+    <!-- 配置事务的通知 -->
+    <tx:advice transaction-manager="dataSourceTransactionManager" id="txAdvice">
+        <tx:attributes>
+            <tx:method name="*" read-only="false" isolation="DEFAULT"/>
+            <tx:method name="find*" read-only="true"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置AOP-->
+    <aop:config>
+        <!-- 配置切入点表达式 -->
+        <aop:pointcut id="pt1" expression="execution(* site.syzhou.service.impl.*.*(..))"/>
+        <!-- 建立通知和切入点表达式的关系 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"></aop:advisor>
+    </aop:config>
+</beans>

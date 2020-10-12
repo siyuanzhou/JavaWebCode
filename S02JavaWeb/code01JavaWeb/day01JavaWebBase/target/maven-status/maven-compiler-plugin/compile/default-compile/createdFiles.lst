@@ -1,0 +1,7 @@
+site\newvalue\cookie\DemoCookieTest.class
+site\newvalue\utils\DownLoadUtils.class
+site\newvalue\download\DownloadServlet.class
+site\newvalue\login\CheckCodeServlet.class
+site\newvalue\login\LoginServlet.class
+site\newvalue\login\User.class
+site\newvalue\utils\JDBCUtils.class

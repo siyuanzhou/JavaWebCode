@@ -1,0 +1,9 @@
+site\newvalue\service\ProvinceService.class
+site\newvalue\dao\impl\ProvinceDaoImpl.class
+site\newvalue\jedis\test\JedisTest.class
+site\newvalue\jedis\util\JedisPoolUtils.class
+site\newvalue\domain\Province.class
+site\newvalue\service\impl\ProvinceServiceImpl.class
+site\newvalue\util\JDBCUtils.class
+site\newvalue\web\servlet\ProvinceServlet.class
+site\newvalue\dao\ProvinceDao.class

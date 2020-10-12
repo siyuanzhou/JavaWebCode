@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis_day02_config" />
+        <module name="mybatis_day04_delayload" />
+        <module name="mybatis_day02_curd" />
+        <module name="mybatis_day01_essy" />
+        <module name="day01_eesy_04mybatis_design" />
+        <module name="mybatis_day04_annotation" />
+        <module name="mybatis_day03_onetomany" />
+        <module name="mybatis_day03_jndi" />
+        <module name="mybatis_day02_daoimpl" />
+        <module name="mybatis_day03_dynamicsql" />
+        <module name="mybatis_day01_codedesign" />
+        <module name="mybatis_day02_dynamicsql" />
+        <module name="mybatis_day03_onetoone" />
+        <module name="mybatis_day03_manytomany" />
+        <module name="mybatis_day04_cache" />
+      </profile>
+      <profile name="Annotation profile for learnMybatis" enabled="true">
+        <sourceOutputDir name="../mybatis_day01_anno/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../mybatis_day01_anno/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis_day01_annoessay" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
+  </component>
+</project>

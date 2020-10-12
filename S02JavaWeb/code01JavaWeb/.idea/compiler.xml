@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day03Xml" />
+        <module name="day05UserInfo" />
+        <module name="day04AjaxJson" />
+        <module name="day11MyBatis" />
+        <module name="day09Vue" />
+        <module name="day01JavaWebBase" />
+        <module name="day12Spring" />
+        <module name="day08Redis" />
+        <module name="day10Travel" />
+        <module name="day13SpringMVCDemo" />
+        <module name="day14SSM" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

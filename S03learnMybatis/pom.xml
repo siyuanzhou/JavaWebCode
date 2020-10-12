@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>site.syzhou</groupId>
+    <artifactId>learnMybatis</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mybatis_day01_essy</module>
+        <module>mybatis_day01_anno</module>
+        <module>mybatis_day01_codedesign</module>
+        <module>mybatis_day02_curd</module>
+        <module>mybatis_day02_daoimpl</module>
+        <module>mybatis_day02_config</module>
+        <module>mybatis_day03_dynamicsql</module>
+        <module>mybatis_day03_onetoone</module>
+        <module>mybatis_day03_manytomany</module>
+        <module>mybatis_day03_jndi</module>
+        <module>mybatis_day04_delayload</module>
+        <module>mybatis_day04_cache</module>
+        <module>mybatis_day04_annotation</module>
+    </modules>
+
+
+</project>

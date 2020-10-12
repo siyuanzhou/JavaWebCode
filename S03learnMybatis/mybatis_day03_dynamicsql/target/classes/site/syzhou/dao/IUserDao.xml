@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.syzhou.dao.IUserDao">
+    <sql id="defaultSql">
+        select * from user
+    </sql>
+    <!--配置查询所有-->
+    <select id="findAll" resultType="site.syzhou.domain.User">
+        <include refid="defaultSql"></include>
+    </select>
+    <!-- 保存用户-->
+    <insert id="saveUser" parameterType="site.syzhou.domain.User">
+        <selectKey keyColumn="id" keyProperty="id" resultType="int">
+            select last_insert_id();
+        </selectKey>
+        insert into user(username,birthday,sex,address) value (#{username},#{birthday},#{sex},#{address})
+    </insert>
+    <!--更新用户-->
+    <update id="updateUser" parameterType="site.syzhou.domain.User">
+        update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
+    </update>
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="Integer">
+        delete  from user  where id=#{id}
+    </delete>
+    <!--模糊查找用户-->
+    <select id="findByName" parameterType="String" resultType="site.syzhou.domain.User">
+        select * from user where username like #{name}
+    </select>
+    <!--聚合查詢-->
+    <select id="findTotal" resultType="int">
+        select count(*) from user;
+    </select>
+
+    <!--if使用-->
+    <!--
+    <select id="findByUser" resultType="site.syzhou.domain.User" parameterType="site.syzhou.domain.User">
+        select * from user where 1=1
+        <if test="username!=null and username!=''">
+            and username like #{username}
+        </if>
+        <if test="address !=null">
+            and address like #{address}
+        </if>
+    </select>-->
+    <!--if+where使用-->
+    <select id="findByUser" resultType="site.syzhou.domain.User" parameterType="site.syzhou.domain.User">
+        select * from user
+        <where>
+            <if test="username!=null and username!=''">
+                and username like #{username}
+            </if>
+            <if test="address !=null">
+                and address like #{address}
+            </if>
+        </where>
+    </select>
+    <!--foreach使用-->
+    <select id="findInIds" resultType="site.syzhou.domain.User" parameterType="site.syzhou.domain.QueryVo">
+        <!-- select * from user where id in (1,2,3,4,5); -->
+        <include refid="defaultSql"></include>
+        <where>
+            <foreach collection="ids" open="id in (" close=")" item="uid" separator=",">
+                #{uid}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

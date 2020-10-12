@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--使用typeAliases配置别名，它只能配置domain中类的别名 -->
+    <typeAliases>
+        <!--<typeAlias type="com.itheima.domain.User" alias="user"></typeAlias>-->
+        <package name="site.syzhou.domain"/>
+    </typeAliases>
+    <!--配置环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///ssm"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 使用的是注解，引入映射配置文件 -->
+    <mappers>
+        <!-- <mapper class="site.syzhou.dao.AccountDao"/> -->
+        <!-- <mapper resources="site/syzhou/dao/AccountDao.xml"/> -->
+        <!-- 默认扫描该包下所有的dao接口都可以使用 -->
+        <package name="site.syzhou.dao"/>
+    </mappers>
+</configuration>
